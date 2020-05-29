@@ -1,25 +1,25 @@
 var shuffleSequence = seq("intro", sepWith("sep",  seq("practice")), "practiceover", sepWith("sep", rshuffle(startsWith("first"), startsWith("filler"))));
 
-var continueMessage = ["Klikni zde"];
+var continueMessage = ["Zur nächsten Frage hier klicken"];
 
 var aj = "AcceptabilityJudgment";
 
 var q = "Question";
 
-var completionMessage = "[Zadané odpovědi jsou odeslány na server. Děkujeme za spolupráci!]";
+var completionMessage = "[Das Experiment ist abgeschlossen. Ihre Daten wurden an den Server verschickt. Vielen Dank für Ihre Teilnahme!]";
 
 var ms = "Message";
 
 var defaults = [
     "Separator", { transfer: 800,
-                   normalMessage: "Počkejte prosím na další položku v experimentu.",
-                   errorMessage: "Špatně. Počkejte prosím na další položku v experimentu."
+                   normalMessage: "Bitte warten Sie einen Moment auf die nächste Frage.",
+                   errorMessage: "Es ist ein Fehler aufgetreten. Bitte warten Sie einen Moment auf die nächste Frage."
          },
-    "AcceptabilityJudgment", { as: ["levý", "ani jeden", "pravý"],
+    "AcceptabilityJudgment", { as: ["das linke Bild", "keines von beiden", "das rechte Bild"],
                               presentAsScale: false,
                               presentHorizontally: true,
-                              leftComment: "(věta v kontextu odpovídá levému obrázku)",
-                              rightComment: "(věta v kontextu odpovídá pravému obrázku)",
+                              leftComment: "(Der Satz passt in diesem Kontext zum linken Bild)",
+                              rightComment: "(Der Satz passt in diesem Kontext zum rechten Bild)",
                                randomOrder: false,
                                showNumbers: false,
                                },
@@ -30,15 +30,15 @@ var progressBarText = "";
 
 var items = [ ["sep", "Separator", { }],
 
-          ["intro", "Form", {continueMessage: "Pro vstup do experimentu, klikněte zde", html: { include: "example_intro.html" }}],
+          ["intro", "Form", {continueMessage: "Bitte klicken Sie hier, um mit dem Experiment zu beginnen.", html: { include: "example_intro.html" }}],
 
-          ["practice", aj, {s: {html: "<center><table><table cellspacing=100><tr><td><img style=\"display:block;max-width:350px;max-height:350px;width: auto;height: auto;\" src=\"https://github.com/MojmirDocekal/jan_2019_brn_vie/blob/master/1_nd_wrong.jpg?raw=true\"></td><td><img style=\"display:block;max-width:400px;max-height:400px;width: auto;height: auto;\" src=\"https://github.com/MojmirDocekal/jan_2019_brn_vie/blob/master/1_non-distributive.jpg?raw=true\"></td></table></center>Kontext: Aleš a Bedřich byli včera se svými manželkami na večírku. Obě manželky požádaly své manžele, aby je vyfotili. Aleš svoji manželku vyfotil, ale Bedřich ne, protože měl vybitý telefon.<center><p>Věta: <i>Pouze jeden manžel vyfotil svoji manželku.</i></p></p>Věta je adekvátní vůči kontextu a zároveň odpovídá levému obrázku, neboť na něm pouze jeden muž fotí ženu. Pravý obrázek neodpovídá, neboť na něm fotí dva muži. Odpověď <i>ani jeden</i> zde není adekvátní, protože k větě se hodí obrázek nalevo. Klikněte tedy na odpověď <i>levý</i>.</center>"}, hasCorrect: 0}],
+          ["practice", aj, {s: {html: "<center><table><table cellspacing=100><tr><td><img style=\"display:block;max-width:350px;max-height:350px;width: auto;height: auto;\" src=\"https://github.com/MojmirDocekal/blob/master/1_nd_wrong.jpg?raw=true\"></td><td><img style=\"display:block;max-width:400px;max-height:400px;width: auto;height: auto;\" src=\"https://github.com/MojmirDocekal/blob/master/1_non-distributive.jpg?raw=true\"></td></table></center>Kontext: Alex und Fritz waren gestern mit ihren Frauen bei einer Feier. Beide Frauen haben ihre Männer gebeten, sie dort zu fotografieren. Alex hat seine Frau fotografiert, aber Fritz hat es nicht gemacht, weil sein Akku leer war.<center><p>Satz: <i>Bei der Feier hat nur einer von den Männern seine Frau fotografiert.</i></p></p>Der Satz ist in diesem Kontext angemessen und passt zum linken Bild, weil dort nur ein Mann eine Frau fotografiert. Zum rechten Bild passt er nicht, weil dort zwei Männer Fotos von Frauen machen. Die Antwort „keines der beiden“ passt hier nicht, weil der Satz das linke Bild angemessen beschreibt. Klicken Sie auf die Antwort „das linke Bild“.</center>"}, hasCorrect: 0}],
              
-["practice", aj, {s: {html: "<center><table><table cellspacing=100><tr><td><img style=\"display:block;max-width:400px;max-height:400px;width: auto;height: auto;\" src=\"https://github.com/MojmirDocekal/jan_2019_brn_vie/blob/master/9_non-d_f.jpg?raw=true\"></td><td><img style=\"display:block;max-width:370px;max-height:370px;width: auto;height: auto;\" src=\"https://github.com/MojmirDocekal/jan_2019_brn_vie/blob/master/9_nd.jpg?raw=true\"></td></table></center>Kontext: Děti si hrály na půdě, kde našly staré rozbité hračky. Byly z toho smutné. Přinesly je ukázat tatínkovi a prosily ho, zda by mohl rozbité hračky opravit.</p><center><p>Věta: <i>Každé dítě přineslo jednu hračku. </i></p></p>Věta je adekvátní vůči kontextu a zároveň odpovídá pravému obrázku, neboť na něm má každé dítě v ruce jednu hračku. Na levém obrázku nese hračku pouze holčička, zatímco chlapeček má prázdné ruce. Odpověď <i>ani jeden</i> zde není adekvátní, protože se k větě hodí obrázek napravo. Klikněte tedy na odpověď <i>pravý</i>.</center>"}, hasCorrect: 2}],
+["practice", aj, {s: {html: "<center><table><table cellspacing=100><tr><td><img style=\"display:block;max-width:400px;max-height:400px;width: auto;height: auto;\" src=\"https://github.com/MojmirDocekal/blob/master/9_non-d_f.jpg?raw=true\"></td><td><img style=\"display:block;max-width:370px;max-height:370px;width: auto;height: auto;\" src=\"https://github.com/MojmirDocekal/blob/master/9_nd.jpg?raw=true\"></td></table></center>Kontext: Die Kinder haben am Dachboden gespielt und dort alte, kaputte Spielsachen gefunden. Das hat sie traurig gemacht. Sie haben ihrem Vater die Spielsachen gebracht und ihn gebeten, sie zu reparieren.</p><center><p>Satz: <i>Jedes Kind hat einen Gegenstand mitgebracht.</i></p></p>Der Satz ist in diesem Kontext angemessen und passt zum rechten Bild, weil jedes Kind einen Gegenstand in der Hand hat. Am linken Bild hat nur das Mädchen einen Gegenstand in der Hand und der Bub steht mit leeren Händen da. Die Antwort „keines von beiden“ passt hier nicht, weil der Satz das rechte Bild angemessen beschreibt. Klicken Sie auf die Antwort „das rechte Bild“.</center>"}, hasCorrect: 2}],
             
-["practice", aj, {s: {html: "<center><table><table cellspacing=100><tr><td><img style=\"display:block;max-width:450px;max-height:450px;width: auto;height: auto;\" src=\"https://github.com/MojmirDocekal/jan_2019_brn_vie/blob/master/3_d.jpg?raw=true\"></td><td><img style=\"display:block;max-width:610px;max-height:610px;width: auto;height: auto;\" src=\"https://github.com/MojmirDocekal/jan_2019_brn_vie/blob/master/3_d_f.jpg?raw=true\"></td></table></center>Kontext: Alena přišla navštívit svoji sestru Mariku. Alena byla celý týden na dovolené, a proto jí uniklo několik dílů oblíbeného detektivního seriálu. Marika jí proto stručně vylíčila, co se tam odehrálo.</p><center><p>Věta: <i>Marika řekla, že policista Jan zatkl dva zloděje. </i></p></p>Věta je sice adekvátní vůči kontextu, ale ani jeden obrázek dané větě neodpovídá. Levý obrázek větě neodpovídá, protože jsou na něm dva policisté a každý z nich zatkl dva zloděje. Vyslovená věta ovšem zmiňuje pouze jednoho policistu. Pravý obrázek také neodpovídá, protože jsou na něm dva policisté a každý z nich zatkl jednoho zloděje. Ani jeden obrázek tedy neodpovídá větě. Zvolte možnost <i>ani jeden</i>.</center>"}, hasCorrect: 1}],             
+["practice", aj, {s: {html: "<center><table><table cellspacing=100><tr><td><img style=\"display:block;max-width:450px;max-height:450px;width: auto;height: auto;\" src=\"https://github.com/MojmirDocekal/blob/master/3_d.jpg?raw=true\"></td><td><img style=\"display:block;max-width:610px;max-height:610px;width: auto;height: auto;\" src=\"https://github.com/MojmirDocekal/blob/master/3_d_f.jpg?raw=true\"></td></table></center>Kontext: Alice war auf Besuch bei ihrer Schwester Maria. Davor war Alice die ganze Woche auf Urlaub und hat daher mehrere Folgen ihrer Lieblingskrimiserie verpasst. Maria hat ihr deshalb kurz erzählt, was inzwischen in der Serie passiert ist.</p><center><p>Satz: <i>Die Maria hat erzählt, dass der Polizist Jan zwei Diebe verhaftet hat.</i></p></p>Der Satz ist im Kontext angemessen, aber passt zu keinem der Bilder. Das linke Bild passt nicht, weil zwei Polizisten zu sehen sind und jeder davon zwei Diebe verhaftet hat. Im Satz wird aber nur ein Polizist erwähnt. Das rechte Bild passt auch nicht, weil es ebenfalls zwei Polizisten zeigt, die jeweils einen Dieb verhaftet haben. Der Satz entspricht also weder dem linken noch dem rechten Bild. Klicken Sie auf „keines der beiden“.</center>"}, hasCorrect: 1}],             
 
-          ["practiceover", "Message", {continueMessage: "Klikněte zde pro pokračování experimentu", html: ["div", ["p", "Zde končí přípravná část experimentu. Klikněte níže pro vstup do experimentu."]]}],
+          ["practiceover", "Message", {continueMessage: "Klicken Sie hier, um mit dem Experiment fortzufahren.", html: ["div", ["p", "Der Einführungsteil des Experiments ist jetzt abgeschlossen. Klicken Sie auf den Link unten, um mit dem Hauptteil zu beginnen."]]}],
 
 [["first-item1-d-ref", 1], aj, {s: {html: "<center><table><table cellspacing=100><tr><td><img style=\"display:block;max-width:350px;max-height:350px;width: auto;height: auto;\" src=\"https://github.com/MojmirDocekal/jan_2019_brn_vie/blob/master/1_distributive.jpg?raw=true\"></td><td><img style=\"display:block;max-width:350px;max-height:350px;width: auto;height: auto;\" src=\"https://github.com/MojmirDocekal/jan_2019_brn_vie/blob/master/1_d_wrong.jpg?raw=true\"></td></table></center> Kontext: Včera se konal v Praze večírek celebrit. Sešli se zde známí herci, zpěváci, modelky a samozřejmě novináři bulvárních časopisů. Večírku se zúčastnily také herečky Simona a Kamila. Šéfredaktoři přikázali novinářům pořídit fotografie ukazující temnou stránku celebrit. Novináři Karel a Jakub tedy doufali, že se jim pořadí pořídit kompromitující fotografie pozvaných osobností, které by mohly čtenáře časopisů zajímat.</p><center><p>Věta: <i> Karel i Jakub vyfotili dvě herečky.</i></p></p>Větě v daném kontextu odpovídá obrázek:</center>"}}],
 
