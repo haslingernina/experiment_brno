@@ -1,3 +1,11 @@
 li.Question-scale-box {
 	width: 7em;
 }
+
+img {
+
+border-style: solid;
+border-width: 2px;
+border-color: black;
+
+}
